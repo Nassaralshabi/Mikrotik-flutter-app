@@ -1,16 +1,61 @@
-# mikrotikhotspot
+# Mikrotik Hotspot Flutter App
 
-A new Flutter project.
+A cross-platform Flutter application for managing Mikrotik Hotspot users, plans, and devices. This app provides a modern interface for user registration, login, voucher management, device info, and more, with support for both mobile and web platforms.
+
+## Features
+- User registration and login
+- Voucher generation and management
+- User profile and settings
+- Device info and dashboard
+- Plan management (add, edit, delete)
+- Password reset and verification
+- Localization (Arabic/English)
+- Responsive UI for mobile and web
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
+- [Flutter SDK](https://flutter.dev/docs/get-started/install) (3.x or later recommended)
+- Android Studio, VS Code, or any preferred IDE
+- A connected device, emulator, or Chrome for web
 
-A few resources to get you started if this is your first Flutter project:
+### Installation
+1. **Clone the repository:**
+   ```sh
+   git clone <your-repo-url>
+   cd mikrotikhotspot
+   ```
+2. **Install dependencies:**
+   ```sh
+   flutter pub get
+   ```
+3. **Run the app:**
+   - For Android/iOS:
+     ```sh
+     flutter run
+     ```
+   - For Web (Chrome):
+     ```sh
+     flutter run -d chrome
+     ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Project Structure
+- `lib/` - Main Dart source code
+  - `component/` - Reusable UI components
+  - `screens/` - App screens and flows
+  - `utility/` - API and helper utilities
+- `assets/` - Images, fonts, and other assets
+- `test/` - Unit and widget tests
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Configuration
+- Update API endpoints and credentials in `lib/utility/routerboardservice.dart` as needed.
+- Add your own assets (logos, icons) in the `assets/` folder and reference them in `pubspec.yaml`.
+
+## Localization
+- The app supports Arabic and English. You can add more languages in the `lib/l10n/` directory.
+
+## License
+This project is licensed. See the LICENSE file for details.
+
+## Contact
+For support or questions, contact the developer at [amolood@icloud.com](mailto:amolood@icloud.com).
