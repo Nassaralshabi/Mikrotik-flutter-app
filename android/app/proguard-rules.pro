@@ -1,0 +1,2 @@
+-keep class be.tramckrijte.workmanager.WorkManagerBroadcastReceiver { *; }
+-keepclassmembers class be.tramckrijte.workmanager.WorkManagerBroadcastReceiver { *; }
