@@ -43,7 +43,7 @@ dependencies:
   pin_code_fields: ^8.0.1
   url_launcher: ^6.0.9
   toastification: ^2.0.0
-  workmanager: ^0.5.2
+  workmanager: ^0.6.0
   percent_indicator: ^4.2.3
   google_fonts: ^6.2.1
   mikrotik_mndp: ^0.0.4
