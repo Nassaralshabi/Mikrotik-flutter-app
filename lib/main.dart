@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workmanager/workmanager.dart';
 import 'activation_request.dart';
 import 'login_page.dart';
+import 'dashboard.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -102,13 +103,22 @@ class MyApp extends StatelessWidget {
 
   Future<Widget> _getInitialRoute() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool requestActivation = prefs.getBool('requestActivation') ?? false;
-    if(requestActivation) {
-      VersionCheckScreen();
-      return const ActivationRequest();
-    } else {
-      VersionCheckScreen();
-      return const LoginPage();
+    
+    // إعداد بيانات افتراضية للمستخدم
+    await _setupDefaultUserData(prefs);
+    
+    // الانتقال مباشرة إلى لوحة التحكم بدون تسجيل دخول
+    return DashboardScreen();
+  }
+  
+  Future<void> _setupDefaultUserData(SharedPreferences prefs) async {
+    // تعيين بيانات افتراضية إذا لم تكن موجودة
+    if (prefs.getString('email') == null) {
+      prefs.setString('id', 'admin');
+      prefs.setString('name', 'مدير النظام');
+      prefs.setString('email', 'admin@aywa.local');
+      prefs.setString('phone', '123456789');
+      prefs.setBool('isLoggedIn', true);
     }
   }
 }
@@ -138,30 +148,18 @@ class _VersionCheckScreenState extends State<VersionCheckScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? mikrotikIp = prefs.getString('mikrotikIp');
     String? serialNumber = prefs.getString('serial-number');
-    String? email = prefs.getString('email');
 
-    if(email == null) {
-      Navigator.pushAndRemoveUntil(
+    // تم إلغاء فحص البريد الإلكتروني - الانتقال مباشرة
+    if (mikrotikIp == null || mikrotikIp.isEmpty || serialNumber == null || serialNumber.isEmpty) {
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const LoginPage(),
+          builder: (context) => const SettingsScreen(),
         ),
-        (route) => false,
       );
     } else {
-      if (mikrotikIp == null || mikrotikIp.isEmpty || serialNumber == null || serialNumber.isEmpty) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const SettingsScreen(),
-          ),
-        );
-      } else {
-        await _checkVersion();
-      }
+      await _checkVersion();
     }
-
-
   }
 
   Future<void> _checkVersion() async {
@@ -217,7 +215,7 @@ class _VersionCheckScreenState extends State<VersionCheckScreen> {
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            builder: (context) => const LoginPage(),
+            builder: (context) => DashboardScreen(),
           ),
           (route) => false,
         );
@@ -240,7 +238,7 @@ class _VersionCheckScreenState extends State<VersionCheckScreen> {
       Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => const LoginPage(),
+          builder: (context) => DashboardScreen(),
         ),
         (route) => false,
       );
