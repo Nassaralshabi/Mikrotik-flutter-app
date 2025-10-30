@@ -36,3 +36,4 @@ jobs:
           name: Aywa-${{ github.ref_name }}-release
           path: build/app/outputs/flutter-apk/app-release.apk
           retention-days: 90
+ 
