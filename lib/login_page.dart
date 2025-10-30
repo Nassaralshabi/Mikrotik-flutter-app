@@ -24,6 +24,10 @@ class _LoginPageState extends State<LoginPage> {
   final RouterboardService _service =
   RouterboardService(); // Create an instance of the service
 
+  // بيانات تسجيل دخول المدير الافتراضية
+  static const String ADMIN_EMAIL = 'adenmarina2@gmail.com';
+  static const String ADMIN_PASSWORD = '868844';
+
   @override
   void initState() {
     super.initState();
@@ -131,6 +135,15 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+  Future<void> _loginAsAdmin() async {
+    // ملء حقول الإدخال ببيانات المدير
+    _emailController.text = ADMIN_EMAIL;
+    _passwordController.text = ADMIN_PASSWORD;
+    
+    // تنفيذ تسجيل الدخول
+    await _login();
+  }
+
   void checkIfAlreadyLoggedIn() async {
     final prefs = await SharedPreferences.getInstance();
     bool? isLoggedIn = prefs.getBool('isLoggedIn');
@@ -212,6 +225,32 @@ class _LoginPageState extends State<LoginPage> {
                         textColor: Colors.white,
                         iconColor: Colors.white,
                         iconData: Icons.login,
+                      ),
+                      SizedBox(height: height * 0.01),
+                      OutlinedButton.icon(
+                        onPressed: _isLoading ? null : _loginAsAdmin,
+                        icon: const Icon(
+                          Icons.admin_panel_settings,
+                          color: Color(0xFF0D47A1),
+                        ),
+                        label: const Text(
+                          'دخول سريع كمدير',
+                          style: TextStyle(
+                            color: Color(0xFF0D47A1),
+                            fontSize: 15,
+                            fontFamily: 'Tajawal',
+                          ),
+                        ),
+                        style: OutlinedButton.styleFrom(
+                          side: const BorderSide(
+                            color: Color(0xFF0D47A1),
+                            width: 2,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                        ),
                       ),
                       SizedBox(height: height * 0.02),
                       Row(
