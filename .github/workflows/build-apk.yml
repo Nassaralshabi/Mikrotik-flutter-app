@@ -2,8 +2,16 @@ name: Build APK
 
 on:
   push:
+    branches:
+      - main
+      - develop
     tags:
       - 'v*'
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
 
 jobs:
   build-apk:
@@ -33,7 +41,7 @@ jobs:
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Aywa-${{ github.ref_name }}-release
+          name: ${{ github.ref_type == 'tag' && format('Aywa-{0}-release', github.ref_name) || format('Aywa-{0}-{1}-release', github.ref_name, github.run_number) }}
           path: build/app/outputs/flutter-apk/app-release.apk
           retention-days: 90
  
