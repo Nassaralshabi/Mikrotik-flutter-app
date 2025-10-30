@@ -31,12 +31,25 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          cache: true
+
+      - name: Verify Flutter installation
+        run: |
+          flutter --version
+          flutter doctor -v
 
       - name: Install dependencies
-        run: flutter pub get
+        run: |
+          echo "Installing Flutter dependencies..."
+          flutter pub get
+          echo "Dependencies installed successfully"
 
       - name: Build release APK
-        run: flutter build apk --release
+        run: |
+          echo "Starting APK build..."
+          flutter build apk --release --verbose
+          echo "APK build completed"
+          ls -lh build/app/outputs/flutter-apk/
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
