@@ -25,8 +25,8 @@ class _LoginPageState extends State<LoginPage> {
   RouterboardService(); // Create an instance of the service
 
   // بيانات تسجيل دخول المدير الافتراضية
-  static const String ADMIN_EMAIL = 'adenmarina2@gmail.com';
-  static const String ADMIN_PASSWORD = '868844';
+  static const String ADMIN_EMAIL = 'nassar@aywa.local';
+  static const String ADMIN_PASSWORD = '773114243';
 
   @override
   void initState() {

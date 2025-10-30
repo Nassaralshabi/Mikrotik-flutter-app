@@ -115,9 +115,9 @@ class MyApp extends StatelessWidget {
     // تعيين بيانات افتراضية إذا لم تكن موجودة
     if (prefs.getString('email') == null) {
       prefs.setString('id', 'admin');
-      prefs.setString('name', 'مدير النظام');
-      prefs.setString('email', 'admin@aywa.local');
-      prefs.setString('phone', '123456789');
+      prefs.setString('name', 'Eng: Nassar Alshabi');
+      prefs.setString('email', 'nassar@aywa.local');
+      prefs.setString('phone', '773114243');
       prefs.setBool('isLoggedIn', true);
     }
   }

@@ -100,7 +100,7 @@ class _AboutUsState extends State<AboutUs> {
                 ),
                 const SizedBox(height: 10),
                 const Text(
-                  'البريد الإلكتروني: info@digitalize.sd',
+                  'البريد الإلكتروني: info@nassar-tech.com',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.black,
@@ -109,7 +109,16 @@ class _AboutUsState extends State<AboutUs> {
                 ),
                 const SizedBox(height: 5),
                 const Text(
-                  'الهاتف: 0912740956',
+                  'الهاتف: 773114243',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                    fontFamily: 'Tajawal',
+                  ),
+                ),
+                const SizedBox(height: 5),
+                const Text(
+                  'المطور: Eng: Nassar Alshabi',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.black,

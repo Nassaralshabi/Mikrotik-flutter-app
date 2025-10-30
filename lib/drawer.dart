@@ -114,7 +114,7 @@ class _MyDrawerState extends State<MyDrawer> {
                       onTap: () async {
                         await launchUrl(
                           Uri.parse(
-                            'https://wa.me/249912740956?text='
+                            'https://wa.me/249773114243?text='
                                 'السلام عليكم ورحمة الله وبركاته\n'
                                 'تواصل بخصوص تطبيق ايوا\n',
                           ),
@@ -144,7 +144,7 @@ class _MyDrawerState extends State<MyDrawer> {
               const Padding(
                 padding: EdgeInsets.all(20.0),
                 child: Text(
-                  'جميع الحقوق محفوظة © 2024 - ديجيتالايز لاب',
+                  'جميع الحقوق محفوظة © 2024\nEng: Nassar Alshabi\n773114243',
                   style: TextStyle(
                     fontSize: 12.0,
                     color: Colors.black,
