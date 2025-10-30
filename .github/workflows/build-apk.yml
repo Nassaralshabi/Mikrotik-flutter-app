@@ -54,7 +54,7 @@ jobs:
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.ref_type == 'tag' && format('Aywa-{0}-release', github.ref_name) || format('Aywa-{0}-{1}-release', github.ref_name, github.run_number) }}
+          name: ${{ github.ref_type == 'tag' && format('Aywa-{0}-release', github.ref_name) || format('Aywa-{0}-{1}-release', github.event_name, github.run_number) }}
           path: build/app/outputs/flutter-apk/app-release.apk
           retention-days: 90
  
